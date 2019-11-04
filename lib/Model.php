@@ -1666,12 +1666,15 @@ class Model
 			$list = $table->find($options);
 		}
 		$results = count($list);
-
+		
+		if (!is_array($values)) {
+			$values = array($values);
+		}
+		
 		if ($results != ($expected = count($values)))
 		{
 			$class = get_called_class();
-			if (is_array($values))
-				$values = join(',',$values);
+			$values = join(',',$values);
 
 			if ($expected == 1)
 			{
